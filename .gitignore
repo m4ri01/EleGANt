@@ -1,7 +1,6 @@
 /data
 /results
 *.dat
-*.pth
 *.pt
 
 # *.txt

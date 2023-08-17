@@ -341,10 +341,11 @@ class Solver():
 
             #save the images
             if (self.epoch) % self.vis_freq == 0:
-                self.vis_train([image_s.detach().cpu(), 
-                                image_r.detach().cpu(), 
-                                fake_A.detach().cpu(), 
-                                pgt_A.detach().cpu()])
+                self.vis_train([pgt_A.detach().cpu()])
+                # self.vis_train([image_s.detach().cpu(), 
+                #                 image_r.detach().cpu(), 
+                #                 fake_A.detach().cpu(), 
+                #                 pgt_A.detach().cpu()])
             #                   rec_A.detach().cpu()])
 
             # Save model checkpoints
@@ -439,7 +440,7 @@ class Solver():
     def vis_train(self, img_train_batch):
         # saving training results
         img_train_batch = torch.cat(img_train_batch, dim=3)
-        save_path = os.path.join(self.vis_folder, 'epoch_{:d}_fake.png'.format(self.epoch))
+        save_path = os.path.join(self.vis_folder, 'epoch_{:d}_result.png'.format(self.epoch))
         vis_image = make_grid(self.de_norm(img_train_batch), 1)
         save_image(vis_image, save_path) #, normalize=True)
 
