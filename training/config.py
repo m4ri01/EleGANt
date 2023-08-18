@@ -17,9 +17,9 @@ _C.LOG.VIS_FREQ = 1
 
 # Data settings
 _C.DATA = CfgNode()
-_C.DATA.PATH = './data/MT-Dataset'
-_C.DATA.NUM_WORKERS = 4
-_C.DATA.BATCH_SIZE = 1
+_C.DATA.PATH = './data/MT-Dataset/divide2'
+_C.DATA.NUM_WORKERS = 1
+_C.DATA.BATCH_SIZE = 10
 _C.DATA.IMG_SIZE = 256
 
 # Training hyper-parameters
@@ -28,7 +28,7 @@ _C.TRAINING.G_LR = 2e-4
 _C.TRAINING.D_LR = 2e-4
 _C.TRAINING.BETA1 = 0.5
 _C.TRAINING.BETA2 = 0.999
-_C.TRAINING.NUM_EPOCHS = 50
+_C.TRAINING.NUM_EPOCHS = 2
 _C.TRAINING.LR_DECAY_FACTOR = 5e-2
 _C.TRAINING.DOUBLE_D = False
 

@@ -4,12 +4,11 @@ import argparse
 import torch
 from torch.utils.data import DataLoader
 sys.path.append('.')
-
+from tqdm import tqdm
 from training.config import get_config
 from training.dataset import MakeupDataset
-from training.solver import Solver
+from training.solver_modified import Solver
 from training.utils import create_logger, print_args
-
 
 def main(config, args):
     logger = create_logger(args.save_folder, args.name, 'info', console=True)
@@ -17,10 +16,9 @@ def main(config, args):
     logger.info(config)
     
     dataset = MakeupDataset(config)
-    data_loader = DataLoader(dataset, batch_size=config.DATA.BATCH_SIZE, num_workers=config.DATA.NUM_WORKERS, shuffle=True)
-    print(data_loader)    
-    # solver = Solver(config, args, logger)
-    # solver.gen_pgt(data_loader)
+    dataset = DataLoader(dataset, batch_size=config.DATA.BATCH_SIZE, num_workers=config.DATA.NUM_WORKERS, shuffle=False)
+    solver = Solver(config, args, logger)
+    solver.gen_pgt(dataset)
     
 
 if __name__ == "__main__":

@@ -123,7 +123,7 @@ class PreProcess:
         np.save(path, lms)
     
     def load_lms(self, path):
-        lms = np.load(path)
+        lms = np.load(path,allow_pickle=True)
         return torch.IntTensor(lms)
 
     ############################## Compose Process ##############################
